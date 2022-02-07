@@ -1,0 +1,39 @@
+<ion-card id="area-card">
+    <ion-card-title id="area-card-title">
+        <fa-icon [icon]="walletIcon"></fa-icon>wallet
+    </ion-card-title>
+    <ng-container *ngIf="wallet; else emptyState">
+        <div id="area-list">
+            <div id="area-list-head">
+                <div>Token</div>
+                <div>Amount</div>
+                <div>SPL</div>
+                <div>Action</div>
+            </div>
+            <div id="area-list-body">
+                <div *ngFor="let token of tokensByOwner" class="item">
+                    <div style="    display: flex;
+                    align-items: center;
+                    justify-content: center;">
+
+                        <div id="shortenView">{{token.name}}</div>
+                        <fa-icon [appCopyToClipboard] [textToCopy]="token.address" [icon]="copyAddress">
+                        </fa-icon>
+                    </div>
+                    <div>{{(token.amount).toFixed(2)}}</div>
+                    <div>
+                        <fa-icon [icon]="!token.isNative ? vMark : xMark"></fa-icon>
+                    </div>
+                    <div class="area-actions">
+                        <ion-button fill="clear" *ngIf="token.isNative" (click)="openSendTokenPopup()">send</ion-button>
+                        <ion-button fill="clear" *ngIf="token.name == 'stSOL' || token.name == 'OLD stSOL'" (click)="sell(token)">sell</ion-button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #emptyState>
+        <app-empty-state></app-empty-state>
+    </ng-template>
+</ion-card>

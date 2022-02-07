@@ -1,0 +1,19 @@
+<ion-card>
+    <ion-card-content>
+        <ion-card-subtitle>choose a network</ion-card-subtitle>
+        <ion-segment [value]="walletService.networkSubject | async" (ionChange)="onClusterChange($event)">
+
+            <ion-segment-button mode="md" *ngFor="let endpoint of walletService.ENDPOINTS" [value]="endpoint">
+                <ion-label>{{endpoint.name}}</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+
+
+        <ion-card-subtitle>select wallet provider</ion-card-subtitle>
+        <ion-segment  [value]="walletService.providerSubject | async" (ionChange)="onProviderChange($event)">
+            <ion-segment-button mode="md"  *ngFor="let provider of walletService.WALLET_PROVIDERS" [value]="provider">
+                <ion-label>{{provider.name}}</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </ion-card-content>
+</ion-card>

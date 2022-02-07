@@ -1,0 +1,42 @@
+<ion-card id="area-card">
+    <ion-card-title id="area-card-title">
+        <fa-icon [icon]="txBook"></fa-icon>Transaction History
+    </ion-card-title>
+    
+    <ng-container *ngIf="txHistory; else emptyState">
+        <app-search-input (search)="searchTerm = $event" [placeholder]="'search transaction'"></app-search-input>
+        <div id="area-list-head">
+            <div>tx siganture</div>
+            <div>block</div>
+            <div>Amount</div>
+            <div>from</div>
+            <div>to</div>
+        </div>
+        <div id="area-list-body">
+            
+            <!-- <ion-content> -->
+            <!-- <ion-refresher slot="fixed" (ionRefresh)="makeRefresh($event)">
+            <ion-refresher-content pullingIcon="arrow-down-outline" refreshingSpinner="circles">
+            </ion-refresher-content>
+          </ion-refresher> -->
+
+            <div class="item" *ngFor="let dataset of txHistory | filter:searchTerm ">
+                <a (click)="openTxRecord(dataset.signature)">{{ utilsService.shortenSignature(dataset.signature,5)}}</a>
+                <div>{{dataset.block}}</div>
+                <div>{{dataset.amount}}</div>
+                <div>{{ utilsService.shortenAddress(dataset.from) }}<fa-icon [appCopyToClipboard]
+                        [textToCopy]="dataset.from" [icon]="copyAddress"></fa-icon>
+                </div>
+                <div>{{ utilsService.shortenAddress(dataset.to) }}<fa-icon [appCopyToClipboard]
+                        [textToCopy]="dataset.to" [icon]="copyAddress"></fa-icon>
+                </div>
+
+            </div>
+            <!-- </ion-content> -->
+        </div>
+    </ng-container>
+
+    <ng-template #emptyState>
+        <app-empty-state></app-empty-state>
+    </ng-template>
+</ion-card>

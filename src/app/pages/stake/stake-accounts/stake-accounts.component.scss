@@ -1,0 +1,18 @@
+
+#area-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    ion-icon {
+        font-size: 24px;
+    }
+}
+
+#create-stake-account{
+    cursor: pointer;
+    color: var(--sol-stake-prime);
+    transition: 0.3s ease;
+    &:hover{
+        color: var(--sol-stake-active);
+    }
+}

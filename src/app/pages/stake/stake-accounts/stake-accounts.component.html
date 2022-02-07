@@ -1,0 +1,40 @@
+<ion-card id="area-card">
+    <div id="area-head">
+        <ion-card-title id="area-card-title">
+            <ion-icon name="people"></ion-icon>stake accounts
+        </ion-card-title>
+        <div *ngIf="wallet">
+            <ion-icon id="create-stake-account" name="person-add" (click)="openNewStakeAccountPopup()"></ion-icon>
+        </div>
+    </div>
+    <ng-container *ngIf="wallet; else emptyState">
+    <div id="area-list">
+        <div id="area-list-head">
+            <div>address</div>
+            <div>Balance(Value)</div>
+            <div>status</div>
+            <div>Action</div>
+        </div>
+        <div id="area-list-body" *ngIf="stakeAccounts">
+            <div class="item" *ngFor="let account of stakeAccounts | filter:searchTerm ">
+                <!-- <small>{{usdPrice(account.account.lamports / LAMPORTS_PER_SOL)}}</small> -->
+                <div>{{utilsService.shortenAddress(account.pubkey)}}</div>
+                <div>{{account.account.lamports / LAMPORTS_PER_SOL}}
+                    <small>{{utilsService.solanaUsdPrice(account.account.lamports / LAMPORTS_PER_SOL)}}</small> </div>
+                <div>{{account.account.data.parsed.type}}</div>
+                <div class="area-actions">
+                    <ion-button fill="clear" *ngIf="account.account.data.parsed.type == 'initialized'"
+                        (click)="openWithdawPopup(account)">withdraw</ion-button>
+                        <ion-button fill="clear" *ngIf="account.account.data.parsed.type == 'initialized'"
+                        (click)="openDelegatePopup(account)">delegate</ion-button>
+                    <ion-button fill="clear" *ngIf="account.account.data.parsed.type == 'delegated'"
+                        (click)="openUndelegatePopup(account)">undelegate</ion-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-template #emptyState>
+    <app-empty-state></app-empty-state>
+</ng-template>
+</ion-card>

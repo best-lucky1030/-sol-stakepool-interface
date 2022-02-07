@@ -1,0 +1,206 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "sol-stake-interface": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/sol-stake-interface",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
+            ],
+            "styles": [
+              "src/styles.scss",
+              {
+                "input": "node_modules/@ionic/angular/css/normalize.css",
+                "inject": true
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/structure.css",
+                "inject": true
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/typography.css",
+                "inject": true
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/core.css",
+                "inject": true
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/padding.css",
+                "inject": true
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/float-elements.css",
+                "inject": true
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-alignment.css",
+                "inject": true
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-transformation.css",
+                "inject": true
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/flex-utils.css",
+                "inject": true
+              },
+              {
+                "input": "src/theme/variables.css",
+                "inject": true
+              }
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "sol-stake-interface:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sol-stake-interface:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "sol-stake-interface:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "sol-stake-interface:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "sol-stake-interface:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "sol-stake-interface:ionic-cordova-build",
+            "devServerTarget": "sol-stake-interface:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "sol-stake-interface:ionic-cordova-build:production",
+              "devServerTarget": "sol-stake-interface:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "sol-stake-interface:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sol-stake-interface:build:production"
+            }
+          }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
+        }
+      }
+    }
+  },
+  "defaultProject": "sol-stake-interface"
+}

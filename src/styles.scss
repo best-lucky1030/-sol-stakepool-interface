@@ -1,0 +1,141 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    text-decoration: none;
+    font-family: 'Arimo', sans-serif;
+}
+a {
+  cursor: pointer;
+}
+
+body{
+  background-image: linear-gradient(to top, #c23fda, #7b4cbe, #434895, #263a63, #222831) !important;
+}
+
+img{
+    max-width: 100%;
+}
+
+.container{
+  padding: 10px 24px;
+  max-width: 1140px;
+  margin: 0 auto;
+  --background: transparent;
+}
+
+// area block generic style
+ion-spinner {
+  display: block;
+  margin: 0 auto;
+  --color: var(--sol-stake-active);
+}
+ion-card{
+  padding: 20px;
+}
+fa-icon{
+  margin: 0 5px;
+}
+
+#area-card-title{
+  font-size: 24px;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+}
+#area-list-head,.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  line-height: 40px;
+}
+
+#area-list-head{
+  text-transform: capitalize;
+  padding: 10px 0;
+  font-size: 16px;
+  border-bottom: 1px dashed var(--sol-stake-active);
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+
+#area-list-head div, .item > div, .item a {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+#area-list-body {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+.area-actions {
+  display: flex;
+  ion-button{
+      text-transform: capitalize;
+      --border-radius: var(--sol-stake-button-border-radius);
+      --border-color: var(--sol-stake-active);
+      --color: var(--ion-stake-second);
+      --color-hover: var(--sol-stake-active);
+  }
+}
+
+
+
+.connect-wallet-button{
+    --background: white;
+    --color: var(--sol-stake-prime);
+    --padding: 10px 36px;
+    --transition:all 0.3s ease; 
+    --border-radius: var(--sol-stake-button-border-radius);
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 400;
+    letter-spacing: 0.6px;
+    --opacity: 0.9;
+    margin: 0 20px;
+    &:hover{
+        --opacity: 1;
+    }
+    &:disabled{
+        --opacity: 0.5;
+    }
+}
+
+ion-popover.connect-wallet-popover, ion-popover.transfer-token-popup {
+    --max-width: 90%;
+    --width: auto;
+    --max-height: 100%;
+  }
+  ion-popover.setting-box{
+    --width: 320px;
+  }
+  .toastStyle {
+    --color: white;
+    text-transform: capitalize;
+    --border-radius: 8px;
+  }
+  ion-toast::part(message){
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .toastError {
+    --background: var(--sol-stake-err);
+    --box-shadow: 0 8px 16px 0 rgba(255, 30, 30, 0.24);
+  }
+  .toastInfo {
+    --background: var(--sol-stake-prime);
+    --box-shadow: 0 8px 16px 0 rgba(30, 255, 75, 0.24);
+  }
+  .toastSuccess {
+    --background: var(--sol-stake-succ);
+    --box-shadow: 0 8px 16px 0 rgba(199, 30, 255, 0.24);
+  }
+  

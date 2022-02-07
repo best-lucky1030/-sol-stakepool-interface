@@ -1,0 +1,20 @@
+:host {
+    width: 100%;
+  }
+  
+  .form-group {
+    margin: 16px 0;
+    position: relative;
+    ion-icon {
+      position: absolute;
+      right: 10px;
+      top: 12px;
+      color: #3f468e;
+      z-index: 3;
+    }
+    ion-input {
+      --placeholder-color: #00070d;
+      --background: #e7e8ea;
+    }
+  }
+  

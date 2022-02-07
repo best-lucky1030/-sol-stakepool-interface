@@ -1,0 +1,27 @@
+<header>
+    <div class="container" id="top-bar">
+        <nav >
+            <div id="logo">
+                <fa-icon [icon]="logo"></fa-icon>
+            </div>
+
+            <a [routerLinkActiveOptions]="{exact: true}" routerLink="/" routerLinkActive="active-route">wallet</a>
+            <a [routerLinkActiveOptions]="{exact: true}" routerLink="/stake" routerLinkActive="active-route">stake</a>
+            <a href="https://solanabeach.io/" target="_blank">monitor <fa-icon [icon]="exLink"></fa-icon></a>
+        </nav>
+
+        <div id="menu">
+            <!-- <div id="my-spl">0 SPL</div> -->
+            <ng-container *ngIf="!wallet; else logedWallet">
+                <ion-button (click)="openWalletConnector()" class="connect-wallet-button">connect wallet</ion-button>
+            </ng-container>
+            <ng-template #logedWallet>
+                <ion-button class="connect-wallet-button" (click)="myWallet()">
+                    {{ balance }} SOL 
+                    <span id="address">{{utilsService.shortenAddress(wallet.toBase58())}}</span>
+                </ion-button>
+            </ng-template>
+            <ion-icon (click)="openSettingBox($event)" name="cog-outline"></ion-icon>
+        </div>
+    </div>
+</header>

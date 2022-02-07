@@ -1,0 +1,18 @@
+<ion-card>
+    <ion-card-header>
+        <ion-card-subtitle style="font-size: 22px;">withdraw from stake account</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+        <div class="form-group" id="amount-group">
+            <ion-label>how much SOL you want to withdraw from your stake account?</ion-label>
+            <span>
+                <ion-input  #amountInput placeholder="0"></ion-input><small>$SOL</small>
+            </span>
+            <small>the $SOL will be sended back to your main account</small>
+        </div>
+
+        <ion-button [disabled]="amountInput.value == 0" (click)="withdraw()">withdraw</ion-button>
+        <small *ngIf="sendBtnClicked">please approve transaction on wallet provider popup</small>
+    </ion-card-content>
+</ion-card>

@@ -1,0 +1,14 @@
+ion-card{
+    padding: 0;
+}
+ion-segment{
+    margin-bottom: 20px;
+}
+
+ion-segment-button {
+    font-size: 11px;
+    max-width: 90px;
+    --indicator-color: linear-gradient( 221deg ,var(--sol-stake-prime) 0%, var(--sol-stake-active) 55%);
+    --color: var(--sol-stake-prime);
+    --color-checked: var(--sol-stake-prime);
+}

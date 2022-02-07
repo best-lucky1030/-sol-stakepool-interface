@@ -1,0 +1,6 @@
+<div class="form-group">
+    <ion-icon name="search"></ion-icon>
+    <ion-input class="app-input" (ionChange)="onSearch($event.target.value)" [debounce]="time" type="text"
+      [placeholder]="placeholder" id="search-bar">
+    </ion-input>
+  </div>

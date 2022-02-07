@@ -1,0 +1,31 @@
+<ion-card>
+    <ion-card-header>
+        <ion-card-subtitle style="font-size: 22px;">sell your stSOL</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+        <p>
+            selling your stSOL allows you to receive wSOL immediately without a 2 day cool-down period
+        </p>
+        <div class="form-group" id="amount-group">
+            <!-- <ion-label>amount</ion-label> -->
+            <span>
+                <ion-input [value]="amountInput.value || 0" #copyVis placeholder="0"></ion-input><small>$stSOL</small>
+            </span>
+            <ion-range #amountInput value="0" [(ngModel)]="copyVis.value"></ion-range>
+            <small style="display: block;text-align: center;">use slider to adjust amount</small>
+        </div>
+        <div class="form-group" id="select-wsolWallet-wrapper">
+            <ion-select placeholder="select wSOL wallet" (ionChange)="setSelectedWSOLwallet($event)">
+                <ion-select-option *ngFor="let wallet of wSOLwallets" [value]="wallet">
+                    <span>
+                        {{wallet.address}}
+                    </span>
+                </ion-select-option>
+            </ion-select>
+        </div>
+        <small>This service has a 3% fee</small>
+        <ion-button [disabled]="amountInput.value == 0 || selectedWSOLwallet == null " (click)="sell_stSOL()">sell</ion-button>
+        <small *ngIf="sendBtnClicked">please approve transaction on wallet provider popup</small>
+    </ion-card-content>
+
+</ion-card>

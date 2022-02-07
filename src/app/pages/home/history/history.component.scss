@@ -1,0 +1,17 @@
+:host{
+    display: block;
+}
+
+:host ::ng-deep{
+    .ngx-pagination .current{
+        background: var(--sol-stake-active);
+    }
+}
+
+fa-icon{
+    cursor: pointer;
+    transition: 0.3s ease;
+    &:hover{
+        color: var(--sol-stake-active);
+    }
+}

@@ -1,0 +1,102 @@
+
+header {
+    border-bottom: 1px solid var(--sol-stake-prime);
+    #top-bar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    // left bar
+    #logo{
+        overflow: hidden;
+        width: 30px;
+        cursor: pointer;
+        &:hover{
+            animation-name: example;
+            animation-duration: 2s;
+            animation-iteration-count: 1;
+            position: relative;
+        }
+        @keyframes example {
+            from {transform: translate(0, 0);}
+            to {transform: translate(50px, -50px);}
+          }
+     
+    } 
+    nav,#menu {
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        fa-icon{
+            cursor: pointer;
+            font-size: 20px;
+            color: white;
+        }
+    }
+
+    nav a{
+        color: white;
+        cursor: pointer;
+        text-transform: capitalize;
+        opacity: 0.9;
+        margin: 0 10px;
+        &:hover{
+            opacity: 1;
+        }
+        &.active-route{
+            opacity: 1;
+            font-weight: bold;
+        }
+        fa-icon{
+            font-size: 10px;
+            position: relative;
+            bottom: 10px;
+        }
+    }
+    // right bar
+
+    #address {
+        font-weight: bold;
+        margin-left: 6px;
+        border: 1px dashed #be40d8;
+        padding: 6px 10px;
+        border-radius: 12px;
+    }
+    #my-spl {
+        color: white;
+        padding: 7.5px;
+        letter-spacing: 0.6px;
+        cursor: pointer;
+        border-radius: 12px;
+        background: var(--sol-stake-prime);
+        background: linear-gradient( 
+    221deg
+     ,var(--sol-stake-prime) 0%, var(--sol-stake-active) 55%);
+     transition: 0.3s ease;
+     opacity: 0.9;
+     &:hover{
+        opacity: 1;
+     }
+    }
+    ion-icon {
+        font-size: 35px;
+        color: white;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    header #menu{
+        position: absolute;
+        width: 100%;
+        padding: 2%;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+        background-color: black;
+    }
+    header nav,header #menu{
+        width: 100%;
+        justify-content: space-around;
+    }
+}

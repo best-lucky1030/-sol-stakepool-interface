@@ -1,0 +1,15 @@
+
+
+#shortenView{
+    white-space: nowrap;
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+fa-icon{
+    cursor: pointer;
+    transition: 0.3s ease;
+    &:hover{
+        color: var(--sol-stake-active);
+    }
+}
